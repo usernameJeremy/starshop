@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<h1>Starshop: you monopoly-busting option for Starship parts!</h1>
+{% endblock %}
+
+{% block body %}
+<div>
+    {# use double curly brackets for variables from  the controller #}
+    Browse through {{ numberOfStarShips }} starships!
+
+    {# this is used for for loops or if statemens #}
+    {% if numberOfStarShips > 400 %}
+    <p>
+        {# this is a comment #}
+        That's a load of starships!
+    </p>
+    {% endif %}
+</div>
+
+<div>
+    <h2>My Ship</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>{{ myShip.name }}</td>
+        </tr>
+        <tr>
+            <th>Class</th>
+            <td>{{ myShip.class }}</td>
+        </tr>
+        <tr>
+            <th>Captain</th>
+            <td>{{ myShip.captain }}</td>
+        </tr>
+
+        <tr>
+            <th>Status</th>
+            <td>{{ myShip.status }}</td>
+        </tr>
+
+    </table>
+</div>
+{% endblock %}
