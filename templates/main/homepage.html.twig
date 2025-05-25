@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-<h1>Starshop: you monopoly-busting option for Starship parts!</h1>
+Starshop: Beam up some parts!
 {% endblock %}
 
 {% block body %}
+    <h1>Starshop: you monopoly-busting option for Starship parts!</h1>
+
+
 <div>
     {# use double curly brackets for variables from  the controller #}
-    Browse through {{ numberOfStarShips }} starships!
+    Browse through {{ ships| length * 10 }} starships!
 
     {# this is used for for loops or if statemens #}
-    {% if numberOfStarShips > 400 %}
+    {% if ships| length > 2 %}
     <p>
         {# this is a comment #}
         That's a load of starships!
@@ -24,7 +27,11 @@
     <table>
         <tr>
             <th>Name</th>
-            <td>{{ myShip.name }}</td>
+            <td>
+                <a href="{{ path('app_starships_show', {id: myShip.id }) }}">
+                {{ myShip.name }}
+                </a>
+            </td>
         </tr>
         <tr>
             <th>Class</th>
