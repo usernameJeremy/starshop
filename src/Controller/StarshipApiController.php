@@ -14,34 +14,12 @@ class StarshipApiController extends AbstractController
 {
 
     #[Route('/api/starship', name: 'starship')]
-    public function  getCollections(LoggerInterface $logger, StarshipRepository $repository): Response
+    public function  getCollections( StarshipRepository $repository): Response
     {
 
-        $logger->info('Starship get collections success');
-        dd($repository);
-        $starships = [
-            new Starship(
-                1,
-                'Starship 1',
-                'somebody',
-                'garden',
-                'taken over by Q',
-            ),
-            new starship(
-                2,
-                'Starship 2',
-                'somebody',
-                'garden',
-                'taken over by Q',
-            ),
-            new starship(
-                3,
-                'Starship 3',
-                'somebody',
-                'garden',
-                'taken over by Q',
-            )
-        ];
+
+
+        $starships = $repository->findAll();
 
          return $this->json($starships);
     }
